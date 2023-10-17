@@ -24,6 +24,14 @@ class Builder(ABC):
     @abstractmethod
     def produce_part_c(self) -> None:
         pass
+    
+    @abstractmethod
+    def produce_part_d(self) -> None:
+        pass
+
+    @abstractmethod
+    def produce_part_e(self) -> None:
+        pass
 
 class ConcreteBuilder1(Builder):
     """
@@ -70,6 +78,12 @@ class ConcreteBuilder1(Builder):
 
     def produce_part_c(self) -> None:
         self._product.add("PartC1")
+    
+    def produce_part_d(self) -> None:
+        self._product.add("PartD1")
+    
+    def produce_part_e(self) -> None:
+        self._product.add("PartE1")
 
 class Product1():
     """
@@ -121,11 +135,18 @@ class Director:
 
     def build_minimal_viable_product(self) -> None:
         self.builder.produce_part_a()
+    
+    def build_semi_featured_product(self) -> None:
+        self.builder.produce_part_a()
+        self.builder.produce_part_b()
+        self.builder.produce_part_c()
 
     def build_full_featured_product(self) -> None:
         self.builder.produce_part_a()
         self.builder.produce_part_b()
         self.builder.produce_part_c()
+        self.builder.produce_part_d()
+        self.builder.produce_part_e()
 
 if __name__ == "__main__":
     """
@@ -144,6 +165,12 @@ if __name__ == "__main__":
 
     print("\n")
 
+    print("Standard semi featured product: ")
+    director.build_semi_featured_product()
+    builder.product.list_parts()
+
+    print("\n")
+
     print("Standard full featured product: ")
     director.build_full_featured_product()
     builder.product.list_parts()
@@ -154,4 +181,5 @@ if __name__ == "__main__":
     print("Custom product: ")
     builder.produce_part_a()
     builder.produce_part_b()
+    builder.produce_part_c()
     builder.product.list_parts()
