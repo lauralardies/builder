@@ -179,7 +179,7 @@ if __name__ == "__main__":
 
     # Remember, the Builder pattern can be used without a Director class.
     print("Custom product: ") 
-    # Connsume porque está protegido. Si estuviese privado, builder no podría crear nada sin llamar antes al director
+    # Builder crea porque está protegido. Si estuviese privado, builder no podría crear nada sin llamar antes al director
     builder.produce_part_a()
     builder.produce_part_b()
     builder.produce_part_d()
